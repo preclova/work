@@ -1,0 +1,18 @@
+
+# Dla liczb 1-100 wypisz:
+# "{liczba} jest podzielna przez 3" gdy dana liczba jest podzielna przez 3
+# "{liczba} jest podzielna przez 5" gdy dana liczba jest podzielna przez 5
+# "{liczba} jest podzielna przez 15" gdy dana liczba jest podzielna przez 15
+
+# Operator reszty z dzielenia: %
+# 10 % 3 zwróci 1, bo reszta z dzielenia 10/3 to 1
+# liczba podzielna przez 3 zwróci 0
+
+liczby = range(1, 101)
+for liczba in liczby:
+    if liczba % 15 == 0:
+        print(liczba, "jest podzielna przez 15")
+    elif liczba % 3 == 0:
+        print(liczba, "jest podzielna przez 3")
+    elif liczba % 5 == 0:
+        print(liczba, "jest podzielna przez 5")

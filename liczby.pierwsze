@@ -1,0 +1,19 @@
+
+wszystkie_liczby = set(range(3, 101))
+
+np = []  # lista liczb nie-pierwszych
+
+for liczba in range(3, 101):
+    for potencjalny_dzielnik in range(2, liczba):
+        if liczba % potencjalny_dzielnik == 0:
+            # liczba dzieli sie bez reszty przez potencjalny_dzielnik
+            # a zatem nie jest liczba pierwsza
+            np.append(liczba)
+            # nie musimy sprawdzac pozostalych liczb z zakresu [2, liczba)
+            break
+
+liczby_niepierwsze = set(np)
+
+liczby_pierwsze = wszystkie_liczby - liczby_niepierwsze
+print(sorted(liczby_pierwsze))
+

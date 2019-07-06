@@ -1,0 +1,73 @@
+
+"""
+Dla podanych liczb, oblicz:
+1. średnią arytmetyczną (https://pl.wikipedia.org/wiki/%C5%9Arednia_arytmetyczna)
+2. średnią geometryczną (https://pl.wikipedia.org/wiki/%C5%9Arednia_geometryczna)
+3. średnią harmoniczną (https://pl.wikipedia.org/wiki/%C5%9Arednia_harmoniczna)
+4. średnią kwadratową (https://pl.wikipedia.org/wiki/%C5%9Arednia_kwadratowa)
+Zadanie dodatkowe: oblicz średnią ważoną dla podanych wag. Możesz wykorzystać
+funkcję zip(): https://docs.python.org/3/library/functions.html#zip
+Oczekiwane wyniki:
+średnia arytmetyczna:   5.133333333333334
+średnia geometryczna:   38.041931258128585
+średnia harmoniczna:    ~21
+średnia kwadratowa:     58.18762755088061
+średnia ważona:         8.571428571428571
+"""
+
+wartosci = [-24, 70, -88, 12, -4, -33, -33, -75, 84, 67, -98, 97, 40, 79, 7,
+            -30, 17, -50, 4, -60, -26, -69, 71, 80, 30, -66, 88, 26, 60, -22]
+
+wagi = [4, 4, 3, 1, 2, 4, 2, 1, 5, 5, 5, 1, 1, 2, 5, 1, 1, 2, 1, 5, 5, 3, 2,
+        5, 4, 1, 5, 5, 3, 3]
+
+# średnia arytmetyczna #1
+suma = 0
+liczba = 0
+for wartosc in wartosci:
+    suma += wartosc
+    liczba += 1
+sr_arytmetyczna = suma / liczba
+print(sr_arytmetyczna)
+
+# średnia arytmetyczna #2
+suma = sum(wartosci)
+liczba = len(wartosci)
+sr_arytmetyczna = suma / liczba
+print(sr_arytmetyczna)
+
+# średnia geometryczna
+iloczyn = 1
+for wartosc in wartosci:
+    iloczyn *= wartosc
+sr_geometryczna = iloczyn ** (1 / liczba)
+print(sr_geometryczna)
+
+# średnia harmoniczna
+odwrotnosci = []
+liczba_dodatnich = 0
+for wartosc in wartosci:
+    # uwaga: średnia harmoniczna akceptuje tylko dodatnie wartości
+    if wartosc > 0:
+        odwrotnosci.append(1 / wartosc)
+        liczba_dodatnich += 1
+suma_odwrotnosci = sum(odwrotnosci)  # można też użyć pętli for
+sr_harmoniczna = liczba_dodatnich / suma_odwrotnosci
+print(sr_harmoniczna)
+
+# średnia kwadratowa
+kwadraty = []
+for wartosc in wartosci:
+    kwadraty.append(wartosc ** 2)
+suma_kwadratow = sum(kwadraty)  # można też użyć pętli for
+sr_kwadratowa = (suma_kwadratow / liczba) ** 0.5
+print(sr_kwadratowa)
+
+# średnia ważona:
+suma_iloczynow_wag = 0
+for wartosc, waga in zip(wartosci, wagi):
+    suma_iloczynow_wag += wartosc * waga
+sr_wazona = suma_iloczynow_wag / sum(wagi)
+print(sr_wazona)
+
+
